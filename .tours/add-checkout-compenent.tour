@@ -1,0 +1,163 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3 - Build the checkout component",
+  "steps": [
+    {
+      "file": "components/checkout.vue",
+      "line": 1,
+      "title": "Introducing the checkout component",
+      "description": "This file contains the code to start the hosted checkout session for the customer to make their payment. To begin, notice the Vue markup to hold the component's HTML and JS (a `<template>` element and `<script>` element).\n"
+    },
+    {
+      "file": "components/checkout.vue",
+      "line": 2,
+      "title": "Understanding the payment button",
+      "description": "The customer needs a way to interact with the site and start the payment process. A button is a fine choice for this.\n\nThe button has a `class` of `button--green` to match the overall branding and uses the word \"Pay\" as the label text.\n\nMost important, it has a [click event handler](https://vuejs.org/v2/guide/events.html) that calls the JS code defined in our `<script>` element."
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "The JavaScript in this `<script>` element makes the Pay button functional. Notice that `startCheckoutSession()` is the same as the click handler value. This method is called when the user clicks the Pay button. \n\nThis is an [asynchronous (`async`) function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) which waits for the API to return its response before proceeding.",
+      "line": 8,
+      "title": "Understanding startCheckoutSession"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "These variables pull the `API_KEY` and `MERCHANT_ID` values from the `.env` file and make them available to the app.",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 7
+        },
+        "end": {
+          "line": 10,
+          "character": 33
+        }
+      },
+      "title": "Getting environment variable values"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "Requests sent to the Hosted Checkout API must include two headers: an [`Authorization` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) to provide credentials and the `X-Clover-Merchant-ID` to indicate which Clover merchant is making the request.\n\nThis app uses the Axios module for HTTP requests, so we start setting up the request by using Axios's `setHeader()` method and passing in the `authKey` and `mId` values from the previous step.",
+      "line": 12,
+      "selection": {
+        "start": {
+          "line": 11,
+          "character": 7
+        },
+        "end": {
+          "line": 12,
+          "character": 57
+        }
+      },
+      "title": "Setting request headers"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "Once the request headers are set, we can construct the request body and send it to the Hosted Checkout API's `/v1/checkouts` endpoint using the HTTP POST method.\n\nWe'll use another Axios method ($post) to work with the HTTP aspect of the app. This takes two parameters: the URL of the endpoint and the request body.\n\nThe code `await`s the repsonse since we need to information from the response to proceed with the checkout process.",
+      "line": 14,
+      "title": "Creating the checkout request"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "The checkout request body must include a `shoppingCart` object.",
+      "line": 16,
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 11
+        },
+        "end": {
+          "line": 16,
+          "character": 24
+        }
+      },
+      "title": "Building the checkout request body - shoppingCart"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "The `lineItems` array contains one or more objects representing the items in the customer's cart.",
+      "line": 17,
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 14
+        },
+        "end": {
+          "line": 17,
+          "character": 23
+        }
+      },
+      "title": "Building the checkout request body - lineItems"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "Each item in the card must include these required properties:\n\n* `name` - the label of the item being purchased\n* `unitQty` - an integer indicating how many of the item the customer is purchasing\n* `price` - the number of cents to be charged for each item. The API multiplies this value by the `unitQty` when calculating the subtotal.",
+      "line": 22,
+      "selection": {
+        "start": {
+          "line": 18,
+          "character": 14
+        },
+        "end": {
+          "line": 22,
+          "character": 17
+        }
+      },
+      "title": "Building the checkout request body - items"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "If needed, you can include more items in the cart for a single transaction. In this case, the customer has one apple and two oranges in their shopping cart.",
+      "line": 23,
+      "selection": {
+        "start": {
+          "line": 23,
+          "character": 15
+        },
+        "end": {
+          "line": 27,
+          "character": 16
+        }
+      },
+      "title": "Building the checkout request body - additional items"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "Customer name, email, and phone data can be included in a checkout request, but it is not required. If this information is not provided in the request, the customer enters the information themselves on the checkout page.",
+      "line": 35,
+      "selection": {
+        "start": {
+          "line": 30,
+          "character": 11
+        },
+        "end": {
+          "line": 35,
+          "character": 12
+        }
+      },
+      "title": "Building the checkout request body - customer"
+    },
+    {
+      "file": "components/checkout.vue",
+      "selection": {
+        "start": {
+          "line": 14,
+          "character": 9
+        },
+        "end": {
+          "line": 14,
+          "character": 36
+        }
+      },
+      "description": "The JSON response to the POST request is assigned to the `checkoutSession` variable.\n\nTo help provide a reliable user experience, we put the actual request action in a `try` statement. If the API returns an error, it is caught and displayed to the user as a browser alert.",
+      "title": "Sending the checkout request"
+    },
+    {
+      "file": "components/checkout.vue",
+      "description": "Once the `checkoutSession` is returned, we can get the checkout URL returned by the API from the value of the `href` property. Then, we can redirect the customer to the checkout page by changing the `window`'s URL from our site to the checkout page URL. ",
+      "line": 38,
+      "title": "Redirecting to the checkout page"
+    }
+  ]
+}

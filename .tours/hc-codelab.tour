@@ -1,0 +1,34 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "1 - Codelab intro",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "Welcome to this simple tutorial of Clover Hosted Checkout. This lesson shows how to create a Clover hosted checkout session and let the customer make a payment for the items in their cart.\n\n#### Audience\n\nThis codelab is designed for developers and expects that you have some familiarity with web development concepts and tools. You will need to use the command line to build and run the app.\n\n#### Prerequisites\n\nThere are some prerequistes for using this repo. Please make sure to complete these steps before beginning to work with the repo.\n\n* Create a Clover sandbox account and test merchant (see [Setting up a sandbox account](https://docs.clover.com/docs/setup-clover-sandbox-account))\n* Create a hosted checkout API token (see\n[Create an API token](https://www.clover.com/help/create-an-api-token-hosted-checkout/))\n* Configure your [checkout page redirect URLs](https://www.clover.com/help/customize-checkout-page/#set-up-redirect-urls) with the following values:\n  * Failure URL - `https://checkout-example.loca.lt/failure`\n  * Success URL - `https://checkout-example.loca.lt/success`\n  * Cancel URL - `https://checkout-example.loca.lt/cancel`\n\nLet's start by getting familiar with the repo."
+    },
+    {
+      "title": "Repo explainer",
+      "description": "This project is a Vue app bootstrapped with Nuxt.js.\n\nThe structure of the repo is straightforward. There are four folders containing the app's source code and assets. Let's look at each one in detail."
+    },
+    {
+      "directory": "components",
+      "description": "The `components` folder is the container for the Vue components used to construct the final app. During the tutorial, we'll examine the `checkout` component that allows the user to start a Hosted Checkout session."
+    },
+    {
+      "directory": "layouts",
+      "description": "The `layouts` folder contains a Vue file that defines the basic look and feel of the app."
+    },
+    {
+      "directory": "pages",
+      "description": "The `pages` folder holds Vue files for the index page of the app, as well as the pages to be displayed when the hosted checkout process succeeds, fails, or is cancelled by the customer."
+    },
+    {
+      "directory": "static",
+      "description": "The `static` folder contains the favicon file for the app, a static image asset needed to give the app a professional appearance in the browser."
+    },
+    {
+      "title": "Intro wrapup",
+      "description": "Now that you have explored the repo, we can learn more about Hosted Checkout and build a working app. \n\nAt the root of the repo are the basic files needed for Nuxt and Yarn to manage and run the application. Package management is handled by Yarn, so let's get started by running a Yarn command to install the app's packages.\n\n>> `yarn install`"
+    }
+  ]
+}

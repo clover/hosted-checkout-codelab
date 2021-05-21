@@ -1,0 +1,12 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "4 - Use the checkout component",
+  "steps": [
+    {
+      "file": "pages/index.vue",
+      "description": "This element adds the checkout component created in section three to the home page of the app.",
+      "line": 17,
+      "title": "Adding the component to the site"
+    }
+  ]
+}

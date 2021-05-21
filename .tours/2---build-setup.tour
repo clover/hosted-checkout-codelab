@@ -1,0 +1,16 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "2 - Build setup",
+  "steps": [
+    {
+      "title": "Setup your development environment",
+      "description": "There are a few simple steps required to set up the app for your development environment. The first is to configure the app for your merchant and development environment using [Nuxt.js's `env` property](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-env/). \n\n1. Run the following command to create the required environment file:\n>> `yarn setup`\n\n_A .env file is created in the root of the project._"
+    },
+    {
+      "file": ".env",
+      "description": "This file contains two pieces of information specific to your test merchant: the `API_KEY` and `MERCHANT_ID`. These are used to authenticate the app to the Hosted Checkout service. Because the security of your app depends on these values remaining private, we use a .env file to store them so they are not committed to a public repo by accident. This .env file is ignored by Git.\n\n1. Add the following keys to the environment file:\n  ```bash\n  API_KEY=\n  MERCHANT_ID=\n  ```\n1. Log in to your sandbox test merchant account.\n1. On the side-nav, select **Setup > API Tokens**.\n1. On the API Tokens page, click the eye icon to reveal your token. Click **Copy** and paste it in the .env file as the value of `API_KEY`.\n1. On the API Tokens page, click **Copy** for the merchant ID row. Paste it in the .env file as the value of `MERCHANT_ID`.\n1. Save and close the .env file.",
+      "line": 2,
+      "title": "Add environment variables to the .env"
+    }
+  ]
+}
