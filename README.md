@@ -9,7 +9,7 @@ process a payment, and redirect to the merchant site. There are two ways to get 
   2. Checkout the `complete` branch
   3. Start the Codelab intro tour and walk through the codebase
   4. Run the app with `yarn dev`.
-* All other readers can learn about the repo by reading the [Hosted Checkout Codelab docs](https://clover.github.io/pages/hosted-checkout-codelab/)
+* All other readers can learn about the repo by reading the [Hosted Checkout Codelab docs](https://clover.github.io/hosted-checkout-codelab/)
 
 ## About this repo
 
